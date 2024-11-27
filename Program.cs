@@ -1,4 +1,7 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(); 
 // Add services to the container.
@@ -9,7 +12,34 @@ builder.Services.AddHttpClient();
 var app = builder.Build(); // Build the app first
 
 // Cấu hình cổng mặc định là 5000
-app.Urls.Add("http://localhost:5000");
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.HttpsPort = 5000; // Đảm bảo cổng HTTPS
+});
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"], // Địa chỉ Issuer
+            ValidAudience = builder.Configuration["Jwt:Audience"], // Địa chỉ Audience
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])) // Key của JWT
+        };
+    });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        policy => policy.WithOrigins("https://http://localhost:5000")
+                         .AllowAnyHeader()
+                         .AllowAnyMethod());
+});
+
+
+app.UseAuthentication(); // Xác thực
+app.UseAuthorization();  // Phân quyền
+
 
 // Enable Swagger in development environment
 if (app.Environment.IsDevelopment())

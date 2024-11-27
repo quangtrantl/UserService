@@ -31,3 +31,12 @@ C:\Users\admin\UserService\UserService\obj\Debug\net8.0\refint\UserService.dll
 C:\Users\admin\UserService\UserService\obj\Debug\net8.0\UserService.pdb
 C:\Users\admin\UserService\UserService\obj\Debug\net8.0\UserService.genruntimeconfig.cache
 C:\Users\admin\UserService\UserService\obj\Debug\net8.0\ref\UserService.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\admin\UserService\UserService\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\admin\UserService\UserService\obj\Debug\net8.0\UserService.sourcelink.json
